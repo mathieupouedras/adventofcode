@@ -8,6 +8,24 @@ import static org.junit.Assert.*;
 public class RowTest {
 
     @Test
+    public void should_return_division_of_the_two_evenly_divisible_values() {
+        String data = "5 9 2 8";
+
+        Row row = new Row(data);
+
+        assertThat(row.divideTheTwoEvenlyDivisibleValues(), is(4));
+    }
+
+    @Test(expected = MissingTwoEvenlyValuesDivisibleExeption.class)
+    public void should_throw_exception_when_no_values_are_evenly_divisible(){
+        String data = "9 5 4 13";
+
+        Row row = new Row(data);
+
+        row.divideTheTwoEvenlyDivisibleValues();
+    }
+
+    @Test
     public void should_create_row_1_2_3_4() {
         String data = "1 2 3 4";
         Row row = new Row(data);

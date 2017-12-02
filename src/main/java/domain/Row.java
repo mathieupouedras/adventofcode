@@ -33,4 +33,18 @@ class Row {
     int checksum() {
         return getLargestValue() - getSmallestValue();
     }
+
+    public int divideTheTwoEvenlyDivisibleValues() {
+        for (int i = numbers.length - 1; i >= 0; i--) {
+            for (int j = 0; j < numbers.length; j++) {
+                if ( i == j) {
+                    continue;
+                }
+                if (numbers[i] % numbers[j] == 0) {
+                    return numbers[i] / numbers[j];
+                }
+            }
+        }
+        throw new MissingTwoEvenlyValuesDivisibleExeption();
+    }
 }

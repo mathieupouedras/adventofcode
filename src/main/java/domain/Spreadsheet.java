@@ -17,4 +17,7 @@ public class Spreadsheet {
     }
 
 
+    public int evenlyDivisibleChecksum() {
+        return rows.stream().mapToInt(Row::divideTheTwoEvenlyDivisibleValues).sum();
+    }
 }

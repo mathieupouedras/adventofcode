@@ -19,8 +19,29 @@ class Spiral {
     void grow(int location) {
         for (int i = 2; i <= location; i++) {
             move(i);
+            squares[currentY][currentX] = location;
         }
     }
+
+    void growPart2(int location) {
+        int i = 2;
+        while (squares[currentY][currentX] <= location) {
+            move(i);
+            squares[currentY][currentX] =
+                    squares[currentY + 1][currentX]
+                            + squares[currentY + 1][currentX + 1]
+                            + squares[currentY + 1][currentX - 1]
+                            + squares[currentY][currentX + 1]
+                            + squares[currentY][currentX - 1]
+                            + squares[currentY - 1][currentX]
+                            + squares[currentY - 1][currentX + 1]
+                            + squares[currentY - 1][currentX - 1];
+
+
+        }
+        i++;
+    }
+
 
     void move(int location) {
         if (Dimension.RIGHT.equals(lastMove)) {
@@ -58,8 +79,6 @@ class Spiral {
         else {
             moveRight();
         }
-
-        squares[currentY][currentX] = location;
     }
 
     private void moveRight() {
@@ -105,5 +124,9 @@ class Spiral {
 
     int getSteps() {
         return Math.abs(dimension / 2 - currentX) + Math.abs(dimension / 2 - currentY);
+    }
+
+    int getFirstLargerVayleThanInput() {
+        return squares[currentY][currentX];
     }
 }

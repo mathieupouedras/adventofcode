@@ -33,5 +33,20 @@ class SpreadsheetParser {
         return rows;
     }
 
+    List<String> parseLines() {
+        List<String> lines = new ArrayList<>();
+
+        try (Scanner scanner = new Scanner(data)) {
+            while(scanner.hasNextLine()) {
+                lines.add(scanner.nextLine());
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
+
+        return lines;
+    }
+
 
 }

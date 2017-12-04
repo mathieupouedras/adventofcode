@@ -46,4 +46,33 @@ public class PassphraseTest {
         assertThat(valids, is(325));
     }
 
+    @Test
+    public void superTest() {
+        String line = "abcde xyz ecdab";
+
+        Passphrase passphrase = new Passphrase(line);
+
+        assertThat(passphrase.isSuperValide(), is(false));
+    }
+
+    @Test
+    public void submit2() {
+        ClassLoader classLoader = getClass().getClassLoader();
+        File file = new File(classLoader.getResource("input_day4.txt").getFile());
+
+        SpreadsheetParser parser = new SpreadsheetParser(file);
+
+        int valids = 0;
+
+        for (String line : parser.parseLines()) {
+            Passphrase passphrase = new Passphrase(line);
+            if (passphrase.isSuperValide()) {
+                valids++;
+            }
+        }
+
+        assertThat(valids, is(119));
+
+    }
+
 }

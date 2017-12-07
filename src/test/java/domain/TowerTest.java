@@ -27,9 +27,10 @@ public class TowerTest {
 
     @Test
     public void shoul_balanced_weight() {
-        ProgramRepository programRepository = new ProgramRepositoryFile("input_day7.txt");
+        ProgramRepository programRepository = new ProgramRepositoryFile("input_day7_short.txt");
         Tower tower = new Tower(programRepository.getAllPrograms());
-        Program bottomProgram = tower.getBottomProgram();
+
+        assertThat(tower.submit(), is(10));
 
 
     }

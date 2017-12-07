@@ -33,4 +33,34 @@ public class Tower {
         }
         throw new RuntimeException("Cannot find bottom program");
     }
+
+    public int submit() {
+        Program bottomProgram = getBottomProgram();
+        for (String subProgramName : bottomProgram.getAboveProgramsName()) {
+            Program subProgram = getProgram(subProgramName);
+            System.out.println(getBalancedWeight(subProgram, 0));
+        }
+
+        return 0;
+    }
+
+    public int getBalancedWeight(Program program, int weight) {
+        weight += program.getWeight();
+        if (program.isHoldingDisc()) {
+            for (String subProgramName : program.getAboveProgramsName()) {
+                Program subProgram = getProgram(subProgramName);
+                getBalancedWeight(subProgram, weight);
+            }
+        }
+        return weight;
+    }
+
+    private Program getProgram(String programName) {
+        for (Program program : programs) {
+            if (program.getName().equals(programName)) {
+                return program;
+            }
+        }
+        throw new RuntimeException(String.format("Cannot Find program with name %s", programName));
+    }
 }

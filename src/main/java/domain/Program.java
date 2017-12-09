@@ -57,15 +57,18 @@ public class Program {
     }
 
     public int getSubTowerWeight() {
-        int towerWeight = weight;
         if (isHoldingDisc()) {
+            int towerWeight = weight;
             for (Program aboveProgram: abovePrograms) {
-                towerWeight += aboveProgram.getWeight();
+                towerWeight += aboveProgram.getSubTowerWeight();
             }
+            return towerWeight;
 
         }
+        else {
+            return this.weight;
+        }
 
-        return towerWeight;
     }
 
     public List<Program> getAbovePrograms() {

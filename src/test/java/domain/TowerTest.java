@@ -26,12 +26,13 @@ public class TowerTest {
     }
 
     @Test
-    public void shoul_balanced_weight() {
-        ProgramRepository programRepository = new ProgramRepositoryFile("input_day7_short.txt");
+    public void should_balanced_weight() {
+        ProgramRepository programRepository = new ProgramRepositoryFile("input_day7.txt");
         Tower tower = new Tower(programRepository.getAllPrograms());
 
-        assertThat(tower.submit(), is(10));
+        tower.enrichProgram();
 
+        tower.submit();
 
     }
 }

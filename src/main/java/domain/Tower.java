@@ -7,10 +7,22 @@ import java.util.stream.Stream;
 
 public class Tower {
 
+    public List<Program> getPrograms() {
+        return programs;
+    }
+
     private final List<Program> programs;
 
     public Tower(List<Program> programs) {
         this.programs = programs;
+    }
+
+    public void enrichProgram() {
+        for (Program program : programs) {
+            for (String aboveProgramName: program.getAboveProgramsName()) {
+                program.addProgram(getProgram(aboveProgramName));
+            }
+        }
     }
 
     public Program getBottomProgram() {
@@ -36,9 +48,8 @@ public class Tower {
 
     public int submit() {
         Program bottomProgram = getBottomProgram();
-        for (String subProgramName : bottomProgram.getAboveProgramsName()) {
-            Program subProgram = getProgram(subProgramName);
-            System.out.println(getBalancedWeight(subProgram, 0));
+        for (Program aboveProgram: bottomProgram.getAbovePrograms()) {
+            System.out.println(aboveProgram.getSubTowerWeight());
         }
 
         return 0;

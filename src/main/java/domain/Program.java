@@ -1,16 +1,19 @@
 package domain;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Program {
     private final String name;
     private final int weight;
     private final List<String> aboveProgramsName;
+    private List<Program> abovePrograms;
 
     public Program(String name, int weight, List<String> aboveProgramsName) {
         this.name = name;
         this.weight = weight;
         this.aboveProgramsName = aboveProgramsName;
+        this.abovePrograms = new ArrayList<>();
     }
 
     @Override
@@ -29,7 +32,7 @@ public class Program {
         return "Program{" +
                 "name='" + name + '\'' +
                 ", weight=" + weight +
-                ", aboveProgramsName=" + aboveProgramsName +
+                ", programs=" + abovePrograms +
                 '}';
     }
 
@@ -47,6 +50,26 @@ public class Program {
 
     public List<String> getAboveProgramsName() {
         return aboveProgramsName;
+    }
+
+    public void addProgram(Program program) {
+        abovePrograms.add(program);
+    }
+
+    public int getSubTowerWeight() {
+        int towerWeight = weight;
+        if (isHoldingDisc()) {
+            for (Program aboveProgram: abovePrograms) {
+                towerWeight += aboveProgram.getWeight();
+            }
+
+        }
+
+        return towerWeight;
+    }
+
+    public List<Program> getAbovePrograms() {
+        return abovePrograms;
     }
 }
 

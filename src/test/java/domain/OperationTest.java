@@ -9,7 +9,7 @@ public class OperationTest {
 
     @Test
     public void should_increment_value_by_5() {
-        Operation operation = new operationINC(5);
+        Operation operation = new OperationINC(5);
 
         assertThat(operation.execute(10), is(15));
 

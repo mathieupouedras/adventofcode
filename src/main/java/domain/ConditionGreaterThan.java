@@ -9,6 +9,6 @@ public class ConditionGreaterThan extends AbstractCondition implements Condition
 
     @Override
     public boolean apply() {
-        return firstOperand > secondOperand;
+       return firstOperand > secondOperand;
     }
 }

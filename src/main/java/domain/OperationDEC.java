@@ -11,4 +11,11 @@ public class OperationDEC implements Operation {
     public int execute(int input) {
         return input - value;
     }
+
+    @Override
+    public String toString() {
+        return "OperationDEC{" +
+                "value=" + value +
+                '}';
+    }
 }

@@ -8,4 +8,12 @@ public class AbstractCondition {
         this.firstOperand = firstOperand;
         this.secondOperand = secondOperand;
     }
+
+    @Override
+    public String toString() {
+        return  getClass().getName() + "{" +
+                "firstOperand=" + firstOperand +
+                ", secondOperand=" + secondOperand +
+                '}';
+    }
 }

@@ -12,9 +12,15 @@ import java.util.Scanner;
 public class CPU {
 
     List<Register> registers;
+    private int highestValue;
 
     CPU() {
         registers = new ArrayList<Register>();
+        highestValue = 0;
+    }
+
+    public int getHighestValue() {
+        return highestValue;
     }
 
     List<String> parse(String fileName) {
@@ -27,6 +33,7 @@ public class CPU {
             while(scanner.hasNextLine()) {
                 instructions.add(scanner.nextLine());
             }
+
 
         } catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -60,6 +67,9 @@ public class CPU {
 
         if (condition.apply()) {
             register.setValue(operation.execute(register.getValue()));
+            if (register.getValue() > highestValue) {
+                highestValue = register.getValue();
+            }
         }
 
     }

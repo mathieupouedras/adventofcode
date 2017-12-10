@@ -27,5 +27,15 @@ public class CPUTest {
         assertThat(cpu.getLargestRegisterValue(), is(1));
     }
 
+    @Test
+    public void should_return_highest_value() {
+
+        CPU cpu = new CPU();
+
+        cpu.execute("input.txt");
+
+        assertThat(cpu.getHighestValue(), is(5391));
+    }
+
 
 }

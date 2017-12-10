@@ -9,16 +9,16 @@ public class OperationTest {
 
     @Test
     public void should_increment_value_by_5() {
-        Operation operation = new operationINC();
+        Operation operation = new operationINC(5);
 
-        assertThat(operation.execute(10, 5), is(15));
+        assertThat(operation.execute(10), is(15));
 
     }
 
     @Test
     public void shoud_decrement_value_by_5() {
-        Operation operation = new OperationDEC();
+        Operation operation = new OperationDEC(5);
 
-        assertThat(operation.execute(9, 5), is(4));
+        assertThat(operation.execute(9), is(4));
     }
 }

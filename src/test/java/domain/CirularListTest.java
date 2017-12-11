@@ -49,4 +49,21 @@ public class CirularListTest {
 
        assertThat(cirularList.getHash(), is(12));
    }
+
+    @Test
+    public void part2() {
+        List<Integer> values = new ArrayList<>();
+        for (int i = 0; i < 256; i++) {
+            values.add(i);
+        }
+
+        List<Integer> sequence = new SequenceGenerator("192,69,168,160,78,1,166,28,0,83,198,2,254,255,41,12").getSequence();
+
+        CirularList cirularList = new CirularList(sequence, values);
+
+        cirularList.part2();
+
+        System.out.println(cirularList.getValues());
+
+    }
 }

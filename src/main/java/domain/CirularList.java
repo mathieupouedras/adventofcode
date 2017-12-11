@@ -72,11 +72,21 @@ public class CirularList {
     }
 
     private void moveCurrentPosition(int i) {
+        System.out.println(currentPositon);
         if (currentPositon + sequence.get(i) + skip > values.size()) {
             currentPositon = currentPositon + sequence.get(i) + skip - values.size();
         }
         else {
             currentPositon += sequence.get(i) + skip;
         }
+        System.out.println(currentPositon);
+    }
+
+    public int part2() {
+        for (int i = 0; i < 64; i++) {
+            getHash();
+        }
+
+        return 0;
     }
 }

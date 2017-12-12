@@ -10,4 +10,9 @@ class Village {
     Village(Set<Pipe> pipes) {
         this.pipes = pipes;
     }
+
+    int countProgramsInGroup(int groupId) {
+
+        return 0;
+    }
 }

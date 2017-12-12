@@ -6,6 +6,7 @@ import org.junit.Test;
 
 import java.io.File;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import static org.hamcrest.core.Is.is;
@@ -25,9 +26,17 @@ public class VillageTest {
             pipes.addAll(PipeFactory.create(line));
         }
 
-        System.out.println(pipes);
         assertThat(pipes.size(), is(7));
+
+        Village village = new Village(pipes);
+
+        int count = village.countProgramsInGroup(0);
+
+        assertThat(count, is(6));
     }
 
+    @Test
+    public void test() {
 
+    }
 }

@@ -72,21 +72,44 @@ public class CirularList {
     }
 
     private void moveCurrentPosition(int i) {
-        System.out.println(currentPositon);
-        if (currentPositon + sequence.get(i) + skip > values.size()) {
-            currentPositon = currentPositon + sequence.get(i) + skip - values.size();
+        currentPositon += sequence.get(i) + skip;
+        while (currentPositon > values.size()) {
+            currentPositon -= values.size();
         }
-        else {
-            currentPositon += sequence.get(i) + skip;
-        }
-        System.out.println(currentPositon);
     }
 
-    public int part2() {
-        for (int i = 0; i < 64; i++) {
+    public String part2() {
+        for (int i = 0; i <= 64; i++) {
             getHash();
         }
 
-        return 0;
+        return getHexadecimal();
+    }
+
+    List<Integer> denseHash() {
+        List<Integer> denseHash = new ArrayList<>();
+        for (int i = 0; i < values.size(); i+= 16) {
+            int dense = values.get(i);
+            for (int j = i + 1; j < i + 16; j++) {
+                dense ^= values.get(j);
+            }
+            denseHash.add(dense);
+        }
+
+        return denseHash;
+    }
+
+    String getHexadecimal() {
+        StringBuilder stringBuilder = new StringBuilder();
+        List<Integer> integers = denseHash();
+        for (Integer dense : integers) {
+            String code = Integer.toHexString(dense);
+            if (code.length() == 1) {
+                code = "0" + code;
+            }
+            stringBuilder.append(code);
+        }
+
+        return stringBuilder.toString().trim();
     }
 }

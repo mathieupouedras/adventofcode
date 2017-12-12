@@ -47,7 +47,7 @@ public class CirularListTest {
 
        CirularList cirularList = new CirularList(sequence, values);
 
-       assertThat(cirularList.getHash(), is(12));
+       assertThat(cirularList.getHash(), is(48705));
    }
 
     @Test
@@ -61,9 +61,36 @@ public class CirularListTest {
 
         CirularList cirularList = new CirularList(sequence, values);
 
-        cirularList.part2();
+        assertThat(cirularList.part2(), is("4007ff"));
+    }
 
-        System.out.println(cirularList.getValues());
+    @Test
+    public void should_xor() {
+        List<Integer> values = Arrays.asList(65, 27, 9, 1, 4, 3, 40, 50, 91, 7, 6, 0, 2, 5, 68, 22);
+
+        List<Integer> sequence = new SequenceGenerator("192,69,168,160,78,1,166,28,0,83,198,2,254,255,41,12").getSequence();
+
+        CirularList cirularList = new CirularList(sequence, values);
+
+        assertThat(cirularList.denseHash(), is(Arrays.asList(64)));
+    }
+
+    @Test
+    public void should_return_hexa() {
+        List<Integer> values = Arrays.asList(64, 7, 255);
+
+        List<Integer> sequence = new SequenceGenerator("192,69,168,160,78,1,166,28,0,83,198,2,254,255,41,12").getSequence();
+
+        CirularList cirularList = new CirularList(sequence, values);
+
+        assertThat(cirularList.getHexadecimal(), is("4007ff"));
 
     }
+
+    @Test
+    public void should_empty_string() {
+        System.out.println(0^1);
+
+    }
+
 }

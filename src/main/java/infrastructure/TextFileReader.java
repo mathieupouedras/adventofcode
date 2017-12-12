@@ -8,11 +8,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-class TextFileReader implements TextReader {
+public class TextFileReader implements TextReader {
 
     private final File file;
 
-    TextFileReader(File file) {
+    public TextFileReader(File file) {
         this.file = file;
     }
 

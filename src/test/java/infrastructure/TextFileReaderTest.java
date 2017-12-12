@@ -1,5 +1,6 @@
 package infrastructure;
 
+import domain.TextReader;
 import org.junit.Test;
 
 import java.io.File;
@@ -12,9 +13,9 @@ public class TextFileReaderTest {
 
     @Test
     public void should_read_lines() {
-        FileRepository fileRepositiry = new FileRepository();
+        FileRepositoryClassloader fileRepositiry = new FileRepositoryClassloader();
         File file = fileRepositiry.loadFile("input_test.txt");
-        TextFileReader textFileReader = new TextFileReader(file);
+        TextReader textFileReader = new TextFileReader(file);
 
         List<String> lines = textFileReader.readLines();
 

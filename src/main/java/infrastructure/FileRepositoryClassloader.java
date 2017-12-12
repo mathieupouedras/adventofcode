@@ -1,11 +1,14 @@
 package infrastructure;
 
+import domain.FileRepository;
+
 import java.io.File;
 import java.net.URL;
 
-class FileRepository {
+class FileRepositoryClassloader implements FileRepository {
 
-    File loadFile(String filename) {
+    @Override
+    public File loadFile(String filename) {
         ClassLoader classLoader = getClass().getClassLoader();
         URL url = classLoader.getResource(filename);
         if (url == null) {

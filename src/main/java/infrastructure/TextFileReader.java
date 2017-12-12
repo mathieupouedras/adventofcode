@@ -1,12 +1,14 @@
 package infrastructure;
 
+import domain.TextReader;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-class TextFileReader {
+class TextFileReader implements TextReader {
 
     private final File file;
 
@@ -14,7 +16,8 @@ class TextFileReader {
         this.file = file;
     }
 
-    List<String> readLines() {
+    @Override
+    public List<String> readLines() {
         List<String> lines = new ArrayList<>();
         try(Scanner scanner = new Scanner(file)) {
             while(scanner.hasNextLine()) {

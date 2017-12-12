@@ -11,14 +11,14 @@ public class FileRepositoryTest {
 
     @Test(expected = IllegalArgumentException.class)
     public void should_throw_exception_when_filename_not_found() {
-        FileRepository fileRepository = new FileRepository();
+        FileRepositoryClassloader fileRepository = new FileRepositoryClassloader();
 
         fileRepository.loadFile(UNKNOWN_FILENAME);
     }
 
     @Test
     public void should_return_true_if_file_exists() {
-        FileRepository fileRepository = new FileRepository();
+        FileRepositoryClassloader fileRepository = new FileRepositoryClassloader();
 
         assertThat(fileRepository.loadFile("input.txt").exists(), is(true));
     }

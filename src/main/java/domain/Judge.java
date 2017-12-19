@@ -1,6 +1,10 @@
 package domain;
 
 import java.math.BigInteger;
+import java.util.LinkedList;
+import java.util.PriorityQueue;
+import java.util.Queue;
+import java.util.Stack;
 
 class Judge {
 
@@ -15,10 +19,27 @@ class Judge {
     }
 
     void consider(Pair pairs) {
+        Queue<SequenceOfNumber> queueA = new LinkedList<>();
+        Queue<SequenceOfNumber> queueB = new LinkedList<>();
         int count = 0;
-        for (int i = 0; i < pairs.getValue(); i++) {
-            if (generatorA.generate().getValue().and(BigInteger.valueOf(0xFFFF)).equals(generatorB.generate().getValue().and(BigInteger.valueOf(0xFFFF)))) {
-                count++;
+        int iterations = 0;
+        while (iterations < pairs.getValue()) {
+            SequenceOfNumber sequenceOfNumberA = generatorA.generate();
+            SequenceOfNumber sequenceOfNumberB = generatorB.generate();
+
+            if (generatorA.isValueAvailable()) {
+                queueA.add(sequenceOfNumberA);
+            }
+
+            if (generatorB.isValueAvailable()) {
+                queueB.add(sequenceOfNumberB);
+            }
+
+            if (!queueA.isEmpty() && !queueB.isEmpty()) {
+                iterations++;
+                if (queueA.poll().getValue().and(BigInteger.valueOf(0xFFFF)).equals(queueB.poll().getValue().and(BigInteger.valueOf(0xFFFF)))) {
+                    count++;
+                }
             }
         }
         this.matches =  new Match(count);

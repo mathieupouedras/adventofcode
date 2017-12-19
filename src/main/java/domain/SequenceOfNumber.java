@@ -35,4 +35,5 @@ final class SequenceOfNumber {
                 "value=" + value +
                 '}';
     }
+
 }

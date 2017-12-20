@@ -5,7 +5,7 @@ import domain.FileRepository;
 import java.io.File;
 import java.net.URL;
 
-class FileRepositoryClassloader implements FileRepository {
+public class FileRepositoryClassloader implements FileRepository {
 
     @Override
     public File loadFile(String filename) {
